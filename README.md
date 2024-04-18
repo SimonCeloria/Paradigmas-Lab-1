@@ -1,3 +1,4 @@
+
 ---
 # Laboratorio de Funcional
 Integrantes: 
@@ -127,13 +128,29 @@ testId =
 ### Conclusión.
 Aprendimos rápidamente y por encima como hacer unit testing en haskell para asegurarnos que funcionen de forma independiente cada uno de los módulos que fuimos creando e implementando durante el laboratorio.
 # 3. Preguntas
-Al responder tranformar cada pregunta en una subsección para que sea más fácil de leer.
 
-1. ¿Por qué están separadas las funcionalidades en los módulos indicados? Explicar detalladamente la responsabilidad de cada módulo.
-2. ¿Por qué las figuras básicas no están incluidas en la definición del lenguaje, y en vez de eso, es un parámetro del tipo?
-3. ¿Qué ventaja tiene utilizar una función de `fold` sobre hacer pattern-matching directo?
-4. ¿Cuál es la diferencia entre los predicados definidos en Pred.hs y los tests?
+# ¿Por qué están separadas las funcionalidades en los módulos indicados? Explicar detalladamente la responsabilidad de cada módulo.
+## Modulo Dibujo.hs
+## Modulo Pred.hs
+## Modulo Interp.hs
+# ¿Por qué las figuras básicas no están incluidas en la definición del lenguaje, y en vez de eso, es un parámetro del tipo?
+#  ¿Qué ventaja tiene utilizar una función de `fold` sobre hacer pattern-matching directo?
+## La funcion **FoldDib** que nosotros implementamos tiene una serie de ventajas sobre hacer patter-matching directo
+### Mayor flexibilidad
+Al permitir la función `foldDib` introducir funciones como parámetros, esto nos permite una flexibilidad enorme a la hora de usar tipos en esta función, como se puede observar en los test las funciones pasadas a `foldDib` nada tienen que ver con dibujos y aun así su comportamiento es el mismo que si el tipo fuera Dibujo o Figura.
+De esta forma al ser `funcbase` una de las funciones pasadas a la función esta se adapta a la función base de cada contexto para poder ser utilizada correctamente.
+
+### Separacion de preocupaciones
+El pattern matching directo puede hacer que las funciones que operan sobre tipos de datos recursivos se vuelvan largas y difíciles de mantener. Al usar `foldDib`, puedes separar claramente la lógica de manipulación de la estructura de datos de la lógica específica de cada operación, lo que facilita el mantenimiento y la comprensión del código.
+
+### Polimorfismo
+`foldDib` es una forma de lograr polimorfismo paramétrico sobre el tipo `Dibujo`. Esto significa que las funciones de plegado pueden trabajar con cualquier tipo de dibujo (`Dibujo a`), siempre que se proporcionen las funciones necesarias para manejar cada caso.
+
+### En resumen:
+`foldDib` proporciona una forma elegante y flexible de trabajar con tipos de datos recursivos, también proporciona una buena imagen visual de su comportamiento si interpretamos un dibujo como un árbol y a `foldDib` como el colapsamiento de ese árbol en su nodo. De la misma forma podríamos ver `mapDib` como un rastreo y modificación de cada nodo de ese árbol, lo que facilita el entendimiento de todo el código y nuestra estructura.
+# ¿Cuál es la diferencia entre los predicados definidos en Pred.hs y los tests?
 
 # 4. Extras
-Completar si hacen algo.
+##  `Alfombra`
+##  `Sierpinski`
 
